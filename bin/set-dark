@@ -1,0 +1,2 @@
+gsettings set org.gnome.desktop.interface gtk-theme 'Plata-Noir-Compact'
+gsettings set org.gnome.desktop.wm.preferences theme 'Plata-Noir-Compact'

@@ -1,0 +1,5 @@
+#!/bin/bash
+for i in $(xinput list | grep 'Atmel Atmel' | grep -o '=[0-9][0-9]*' | grep -o '[0-9][0-9]*'); do
+	echo "Desabilitando input $i"
+	xinput disable "$i"
+done

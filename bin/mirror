@@ -1,0 +1,2 @@
+rsync -av /public/PROJETOS/ /run/media/luiz/8C6E49DB6E49BF28/PROJETOS
+rsync -anv "/public/FINANÇAS/" "/run/media/luiz/8C6E49DB6E49BF28/ANOTAÇÕES/FINANÇAS"
