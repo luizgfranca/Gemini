@@ -1,0 +1,8 @@
+{
+  "name": "rinha-backend-2023-q3",
+  "version": "1.0.0",
+  "description": "Solução para disputar na Rinha de Backend",
+  "main": "src/main.js",
+  "author": "luizgfc@proton.me",
+  "license": "GPLv3"
+}

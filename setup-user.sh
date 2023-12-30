@@ -19,9 +19,20 @@ fi;
 echo 'Setting up bashrc'
 cp "$HOME"/.bashrc "$HOME"/.bashrc-original
 cp .bashrc "$HOME"
-cp bash_git "$HOME"
+cp .bash_git "$HOME"
 
-echo "Installing vscode extensions"
+echo "Setting up vscode"
 sh vscode/install-extensions.sh
+cp -r vscode/config/Code "$HOME"/.config 
+
+echo 'Setting up helix-editor configuration'
+if type hx >> /dev/null;
+then cp -r helix/* "$HOME"/.config/helix;
+else echo 'Helix not installed, skipping step';
+fi;
+
+echo 'Setting up JetBrains editors'
+cp -r JetBrains "$HOME"/.config
+
 
 echo "Done."

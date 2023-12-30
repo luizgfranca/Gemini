@@ -1,0 +1,6 @@
+FROM fedora:38
+RUN dnf install -y systemd && \
+  rm -rf /tmp/*
+COPY docker-entrypoint.sh /
+
+ENTRYPOINT ["/docker-entrypoint.sh"]

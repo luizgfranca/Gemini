@@ -1,0 +1,11 @@
+<application>
+  <component name="Trusted.Paths">
+    <option name="TRUSTED_PROJECT_PATHS">
+      <map>
+        <entry key="$USER_HOME$/algar/customer-identity-service" value="true" />
+        <entry key="$USER_HOME$/source/multi-producer-consumer-pipe" value="true" />
+        <entry key="$USER_HOME$/source/multi-reader-single-writer" value="true" />
+      </map>
+    </option>
+  </component>
+</application>

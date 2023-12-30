@@ -1,0 +1,2 @@
+- [] when reloading grid, go back to the same position
+- [] add a restart button

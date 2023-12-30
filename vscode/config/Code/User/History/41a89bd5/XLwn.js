@@ -1,0 +1,3 @@
+
+
+const logTimeTransformer = new Transformer

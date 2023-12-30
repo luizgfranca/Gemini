@@ -1,0 +1,10 @@
+FROM node:20-alpine
+WORKDIR /app
+COPY . /app
+RUN yarn install
+RUN npm instal -g forever
+
+EXPOSE 80
+EXPOSE 8080
+
+CMD forever src/main.js

@@ -1,0 +1,270 @@
+<project version="4">
+  <component name="BookmarksManager">
+    <option name="groups">
+      <GroupState>
+        <option name="name" value="multi-producer-consumer-pipe" />
+      </GroupState>
+    </option>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="-1">
+      <file current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/SemaphorePipe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1380">
+              <caret line="57" column="43" selection-start-line="57" selection-start-column="43" selection-end-line="57" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/MessageConsumer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/MessageProducer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/Pipe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file>
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/ConditionQueuePipe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="566">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTypeUsageLocalSummary">
+    <fileType name="JAVA">
+      <summary usageCount="14" lastUsed="1694268476858" />
+    </fileType>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>nextBufferPosition</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/src/main/java/com/github/luizgfranca/MessageConsumer.java" />
+      <option value="$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/SemaphorePipe.java" />
+      <option value="$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/Pipe.java" />
+      <option value="$PROJECT_DIR$/src/main/java/com/github/luizgfranca/MessageProducer.java" />
+      <option value="$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/VariableSyncronizer.java" />
+      <option value="$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/ConditionQueue.java" />
+      <option value="$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/VariableSynchronizer.java" />
+      <option value="$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/ConditionQueuePipe.java" />
+    </changedPaths>
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="LanguageUsageStatistics">
+    <language id="JAVA">
+      <summary usageCount="14" lastUsage="1694268476858" />
+    </language>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="multi-producer-consumer-pipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe}" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="multi-producer-consumer-pipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src}" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="multi-producer-consumer-pipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src/main}" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="multi-producer-consumer-pipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src/main}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src/main/java}" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="multi-producer-consumer-pipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src/main}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src/main/java}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src/main/java/com/github/luizgfranca}" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="multi-producer-consumer-pipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src/main}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src/main/java}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src/main/java/com/github/luizgfranca}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file:///home/luiz/source/multi-producer-consumer-pipe/src/main/java/com/github/luizgfranca/pipe}" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="ToolWindowManager">
+    <layoutV2>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23411459" />
+      <window_info id="Commit" order="1" weight="0.25" />
+      <window_info id="Structure" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Problems" order="1" />
+      <window_info anchor="bottom" id="Problems View" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" />
+      <window_info anchor="bottom" id="Services" order="4" />
+      <window_info anchor="bottom" id="Build" order="5" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Dependencies" order="6" show_stripe_button="false" />
+      <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
+      <window_info anchor="right" id="Database" order="1" weight="0.25" />
+      <window_info anchor="right" id="Gradle" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.25" />
+      <window_info anchor="right" id="Web Inspector" order="4" weight="0.25" />
+      <unified_weights left="0.23411459" />
+    </layoutV2>
+    <recentWindows>
+      <value>Project</value>
+    </recentWindows>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="761" y="233" width="397" height="621" key="#com.intellij.ide.util.MemberChooser" timestamp="1694268584367">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="761" y="233" width="397" height="621" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/0.1080.1920.1080@0.0.1920.1080" timestamp="1694268584367" />
+    <state x="760" y="358" width="379" height="371" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1694260731424">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="760" y="358" width="379" height="371" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080/0.1080.1920.1080@0.0.1920.1080" timestamp="1694260731424" />
+    <state x="618" y="234" width="672" height="696" key="search.everywhere.popup" timestamp="1694269016137">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="618" y="234" width="672" height="696" key="search.everywhere.popup/0.0.1920.1080/0.1080.1920.1080@0.0.1920.1080" timestamp="1694269016137" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/MessageProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/MessageConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/ConditionQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/VariableSynchronizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/Pipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/SemaphorePipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="57" column="43" selection-start-line="57" selection-start-column="43" selection-end-line="57" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/luizgfranca/pipe/ConditionQueuePipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

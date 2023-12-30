@@ -1,0 +1,6 @@
+- [] order units list in alphabetical order
+- [] when reloading grid, go back to the same position
+- [] add a restart button
+- [] make not loaded units not able to be restarted
+- [] create about button that opens a window 
+- [] make the window openned by about button show service's information

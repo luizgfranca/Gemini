@@ -1,0 +1,7 @@
+{
+    "window.titleBarStyle": "custom",
+    "editor.fontWeight": "500",
+    "window.zoomLevel": 1,
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "clangd.path": "/home/luiz/.config/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/16.0.2/clangd_16.0.2/bin/clangd"
+}

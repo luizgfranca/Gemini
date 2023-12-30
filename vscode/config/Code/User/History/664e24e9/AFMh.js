@@ -1,0 +1,12 @@
+"use strict"
+const http = require('http');
+const router = require('./router');
+const onNotification = require('./provider/notification');
+const StackSearchIndexUpdaterJob = require('./job/stack-search-index-updater');
+
+
+require('http').globalAgent.maxSockets = 10
+const server = http.createServer(router)
+StackSearchIndexUpdaterJob.start();
+
+server.listen(process.env.PORT, () => console.log('server started'));

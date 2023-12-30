@@ -1,0 +1,3 @@
+- [] when reloading grid, go back to the same position
+- [] add a restart button
+- [] make not loaded units not able to be restarted

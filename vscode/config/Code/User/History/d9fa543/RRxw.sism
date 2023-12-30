@@ -1,0 +1,13 @@
+id: io.github.luizgfc.sism
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: sism
+modules:
+  - name: bin
+    buildsystem: simple
+    build-commands:
+      - install -D sism /app/bin/sism
+    sources:
+      - type: file
+        path: ../build/sism

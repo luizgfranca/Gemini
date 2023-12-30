@@ -1,0 +1,81 @@
+<application>
+  <component name="NotRoamableUiSettings">
+    <option name="presentationModeIdeScale" value="1.75" />
+  </component>
+  <component name="PropertyService"><![CDATA[{
+  "keyToString": {
+    "CWM_LOGGING_VERSION": "1",
+    "FindSplitterProportion": "0.33004603",
+    "LayoutCode.codeCleanup": "true",
+    "LayoutCode.doNotKeepLineBreaks": "true",
+    "LayoutCode.optimizeImports": "true",
+    "LayoutCode.processChangedText": "false",
+    "LayoutCode.rearrangeEntriesJava": "true",
+    "MarketplacePluginsSearchHistory": "theme\nthe\nvscode",
+    "MemberChooser.copyJavadoc": "false",
+    "MemberChooser.showClasses": "true",
+    "NewProjectWizard.generateOnboardingTips": "true",
+    "NewProjectWizard.gitState": "true",
+    "NewProjectWizard.groupIdState": "io.github.luizgfranca",
+    "NonModalCommitCustomization.IsApplied": "true",
+    "RunOnceActivity.se.text.search": "true",
+    "SettingsSearchHistory": "tab\nkeyma",
+    "appcds.runOnSecondStart": "IC-231.9225.16-5bf88d7559529dfaeea9c037c69f27fc01484a3f08268eac6204b367fa8e9ff8",
+    "ask.about.ctrl.y.shortcut.v2": "true",
+    "build.toolwindow.Build Output.selection.state": "com.intellij.build.BuildTreeConsoleView",
+    "build.toolwindow.Sync.selection.state": "com.intellij.build.BuildTreeConsoleView",
+    "bundled.plugins.list.saved.version": "IC-231.9225.16",
+    "com.intellij.ide.projectWizard.generators.JavaNewProjectWizard$Step.selectedStep": "Maven",
+    "com.intellij.ide.wizard.NewProjectWizardLanguageStep.selectedStep": "Java",
+    "decompiler.legal.notice.accepted": "true",
+    "defaultJdkConfigured": "true",
+    "experimental.ui.first.promotion.localdate": "2023-07-18",
+    "experimental.ui.used.once": "true",
+    "file.gist.reindex.count": "10",
+    "fileTypeChangedCounter": "1",
+    "fontSizeToResetConsole": "13.0",
+    "fontSizeToResetEditor": "13.0",
+    "gotit.previous.run": "IC-231.9225.16",
+    "ide.memory.adjusted": "true",
+    "input.method.disabler.muted": "true",
+    "installed.kotlin.plugin.version": "231-1.8.21-IJ9225.16",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "/home/luiz/algar/customer-identity-service/settings.xml",
+    "migrate.android.sdk.path.to.roamable.storage": "false",
+    "migrated.non.roamable.values.from.general.settings": "true",
+    "onboarding.generation.number": "2",
+    "previousColorScheme": "newGen-v0",
+    "project.wizard.group": "NPW.simple-project",
+    "registry.to.advanced.settings.migration.build": "IC-231.9225.16",
+    "tasks.pass.word.conversion.enforced": "true"
+  },
+  "keyToStringList": {
+    "file.chooser.recent.files": [
+      "/home/luiz/source/multi-producer-consumer-pipe",
+      "/home/luiz/algar/customer-identity-service/settings.xml",
+      "/home/luiz/algar/customer-identity-service",
+      "/home/luiz/Downloads/newgen_v0.icls",
+      "/home/luiz/source"
+    ],
+    "fileTypeDetectors": [
+      "com.intellij.ide.scratch.ScratchFileServiceImpl$Detector",
+      "com.android.tools.idea.sqlite.fileType.SqliteFileTypeDetector",
+      "com.android.tools.idea.profilers.capture.MemoryCaptureFileType$Detector",
+      "org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector"
+    ]
+  }
+}]]></component>
+  <component name="ShownTips"><![CDATA[{
+  "shownTips": {
+    "CtrlW": 1690740397674,
+    "SpeedSearch": 1690570302853,
+    "FocusProjectToolWindow": 1690653470437,
+    "CommentCode": 1690073201441,
+    "ShowUsages": 1691364491359,
+    "FindReplaceToggle": 1694260355376,
+    "ContextActions": 1689726046594,
+    "FindInPath": 1691877074373,
+    "AltInsertInEditor": 1691520101044
+  }
+}]]></component>
+</application>

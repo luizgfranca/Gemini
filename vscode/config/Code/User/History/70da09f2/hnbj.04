@@ -1,0 +1,27 @@
+FROM ubuntu:23.04
+
+COPY docker-entrypoint.sh /
+
+RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
+
+RUN apt-get update 
+RUN apt-get install -y --no-install-recommends systemd systemd-sysv 
+RUN apt-get clean 
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ; \
+RUN cd /lib/systemd/system/sysinit.target.wants/ ; \
+RUN ls | grep -v systemd-tmpfiles-setup | xargs rm -f $1 
+RUN rm -f /lib/systemd/system/multi-user.target.wants/* 
+RUN rm -f /etc/systemd/system/*.wants/* 
+RUN rm -f /lib/systemd/system/local-fs.target.wants/* 
+RUN rm -f /lib/systemd/system/sockets.target.wants/*udev* 
+RUN rm -f /lib/systemd/system/sockets.target.wants/*initctl* 
+RUN rm -f /lib/systemd/system/basic.target.wants/* 
+RUN rm -f /lib/systemd/system/anaconda.target.wants/* 
+RUN rm -f /lib/systemd/system/plymouth* 
+RUN rm -f /lib/systemd/system/systemd-update-utmp*
+
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
+  systemd systemd-sysv dbus dbus-user-session
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]

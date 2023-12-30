@@ -1,0 +1,3 @@
+namespace application::resource {
+    
+}

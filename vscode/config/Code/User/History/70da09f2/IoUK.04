@@ -1,0 +1,11 @@
+FROM ubuntu:23.04
+
+COPY docker-entrypoint.sh /
+
+RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
+
+RUN apt-get update 
+RUN apt-get install -y --no-install-recommends systemd systemd-sysv dbus dbus-user-session
+RUN apt-get clean 
+
+ENTRYPOINT ["/docker-entrypoint.sh"]

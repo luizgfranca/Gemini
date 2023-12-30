@@ -1,0 +1,13 @@
+ 1 Source: gentoo
+ 2 Section: unknown
+ 3 Priority: optional
+ 4 Maintainer: Josip Rodin <joy-mg@debian.org>
+ 5 Build-Depends: debhelper (>=10)
+ 6 Standards-Version: 4.0.0
+ 7 Homepage: <insert the upstream URL, if relevant>
+ 8
+ 9 Package: gentoo
+10 Architecture: any
+11 Depends: ${shlibs:Depends}, ${misc:Depends}
+12 Description: <insert up to 60 chars description>
+13  <insert long description, indented with spaces>

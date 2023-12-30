@@ -1,0 +1,49 @@
+<application>
+  <component name="RecentProjectsManager">
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$/algar/customer-identity-service">
+          <value>
+            <RecentProjectMetaInfo frameTitle="customer-identity-service – CorsConfiguration.java [customer-identity-application]" projectWorkspaceId="2T9pO3K5uZQvmrdFYaJHwSmBLw1">
+              <option name="activationTimestamp" value="1691877068229" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IC-231.9225.16" />
+              <option name="buildTimestamp" value="1689138052246" />
+              <frame x="0" y="-37" width="1920" height="1117" fullScreen="true" />
+              <option name="productionCode" value="IC" />
+              <option name="projectOpenTimestamp" value="1691877057947" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/multi-reader-single-writer">
+          <value>
+            <RecentProjectMetaInfo frameTitle="multi-reader-single-writer – AssetPriceConsumer.java" projectWorkspaceId="2Sx1i9Ku65VTcwxCdydlpTR5brf">
+              <option name="activationTimestamp" value="1694260551828" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IC-231.9225.16" />
+              <option name="buildTimestamp" value="1689138023974" />
+              <frame x="0" y="0" width="1910" height="1080" />
+              <option name="productionCode" value="IC" />
+              <option name="projectOpenTimestamp" value="1694260349168" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/multi-producer-consumer-pipe">
+          <value>
+            <RecentProjectMetaInfo frameTitle="multi-producer-consumer-pipe – ConditionQueuePipe.java" opened="true" projectWorkspaceId="2NrILULBKat5V2jv092FXLGrNaD">
+              <option name="activationTimestamp" value="1694271984859" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="IC-231.9225.16" />
+              <option name="buildTimestamp" value="1689138035689" />
+              <frame x="0" y="0" width="1920" height="1080" extendedState="6" />
+              <option name="productionCode" value="IC" />
+              <option name="projectOpenTimestamp" value="1694266300266" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastOpenedProject" value="$USER_HOME$/source/multi-producer-consumer-pipe" />
+    <option name="lastProjectLocation" value="$USER_HOME$/algar" />
+  </component>
+</application>

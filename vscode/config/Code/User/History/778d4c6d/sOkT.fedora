@@ -1,0 +1,10 @@
+FROM fedora:38 as base
+RUN dnf install -y systemd && \
+  rm -rf /tmp/*
+COPY docker-entrypoint.sh /
+COPY dependencies-fedora.sh /
+COPY app /
+RUN /dependencies-fedora.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+CMD "/app"
