@@ -39,7 +39,11 @@ alias gb='git checkout'
 alias gc='git commit'
 alias gp='git pull --rebase'
 alias python='python3'
-. "$HOME/.cargo/env"
+
+if test -f "$HOME/.cargo/env";
+then
+	. "$HOME/.cargo/env"
+fi;
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
