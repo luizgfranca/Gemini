@@ -1,7 +1,0 @@
-Package: sism
-Version: 0.6.0-1
-Section: utils
-Priority: optional
-Architecture: all
-Maintainer: Luiz Gustavo <luizgfc@proton.me>
-Description: Services manager for the linux desktop

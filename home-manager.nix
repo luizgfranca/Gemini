@@ -1,3 +1,4 @@
+
 { config, pkgs, ... }:
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
@@ -8,11 +9,19 @@ in
     (import "${home-manager}/nixos")
   ];
 
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (pkg: true);
+    };
+  };
+  home-manager.useGlobalPkgs = true;
   home-manager.users.luiz = {lib, ...}: {
     /* The home.stateVersion option does not have a default and must be set */
     imports = [
       (import "${plasma-manager}/modules")
     ];
+
     programs.plasma = {
       enable = true;
       workspace = {
@@ -45,6 +54,47 @@ in
       bashrcExtra = ''
         . ~/.cbashrc
       '';
+    };
+    programs.vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        eamodio.gitlens
+        emmanuelbeziat.vscode-great-icons
+        esbenp.prettier-vscode
+        github.github-vscode-theme
+        johnpapa.vscode-peacock
+        ms-python.vscode-pylance
+        ms-toolsai.jupyter
+        ms-toolsai.jupyter-keymap
+        ms-toolsai.jupyter-renderers
+        ms-vscode.cpptools
+        golang.go
+        llvm-vs-code-extensions.vscode-clangd
+        ms-python.python
+        ms-python.vscode-pylance
+        ms-vscode.cmake-tools
+        twxs.cmake
+        zxh404.vscode-proto3 
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "numbered-bookmarks";
+          publisher = "alefragnani";
+          version = "8.4.0";
+          sha256 = "sha256-/1Q4EEB8MxWaMvEMdAWwGfgASMdLwvblIQBendiQISM=";
+        }
+        {
+          name = "sema";
+          publisher = "arzg";
+          version = "1.12.1";
+          sha256 = "sha256-GdybJA3G39F/alrrGruHhlQQ0KMx9IVATVagdw1oRvs=";
+        }
+        {
+          name = "vsc-community-material-theme";
+          publisher = "Equinusocio";
+          version = "1.4.6";
+          sha256 = "sha256-DVgyE9CAB7m8VzupUKkYIu3fk63UfE+cqoJbrUbdZGw=";
+        }
+      ];
     };
 
 

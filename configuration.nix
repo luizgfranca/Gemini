@@ -5,6 +5,14 @@
 { config, pkgs, ... }:
 
 {
+  # Allow unfree packages
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (pkg: true);
+    };
+  };
+ 
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -118,9 +126,6 @@
     isNormalUser = true;
     description = "Luiz";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
   users.users.luizgfranca = {
     isNormalUser = true;
@@ -133,8 +138,6 @@
   };
 
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -148,47 +151,7 @@
     neovim
     vlc
     vscode
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        eamodio.gitlens
-        emmanuelbeziat.vscode-great-icons
-        esbenp.prettier-vscode
-        github.github-vscode-theme
-        johnpapa.vscode-peacock
-        ms-python.vscode-pylance
-        ms-toolsai.jupyter
-        ms-toolsai.jupyter-keymap
-        ms-toolsai.jupyter-renderers
-        ms-vscode.cpptools
-        golang.go
-        llvm-vs-code-extensions.vscode-clangd
-        ms-python.python
-        ms-python.vscode-pylance
-        ms-vscode.cmake-tools
-        twxs.cmake
-        zxh404.vscode-proto3 
-    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "numbered-bookmarks";
-        publisher = "alefragnani";
-        version = "8.4.0";
-	sha256 = "sha256-/1Q4EEB8MxWaMvEMdAWwGfgASMdLwvblIQBendiQISM=";
-      }
-      {
-        name = "sema";
-        publisher = "arzg";
-        version = "1.12.1";
-	sha256 = "sha256-GdybJA3G39F/alrrGruHhlQQ0KMx9IVATVagdw1oRvs=";
-      }
-      {
-        name = "vsc-community-material-theme";
-        publisher = "Equinusocio";
-        version = "1.4.6";
-        sha256 = "sha256-DVgyE9CAB7m8VzupUKkYIu3fk63UfE+cqoJbrUbdZGw=";
-      }
-    ];
-  })
- ];
+  ];
 
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -221,7 +184,10 @@
   system.activationScripts = {
     flathub = ''
       echo "forcing /bin/bash"
-      ln -s /run/current-system/sw/bin/bash /bin/bash
+      if test ! -f "/bin/bash";
+      then
+	      ln -s /run/current-system/sw/bin/bash /bin/bash
+      fi;
 
       echo "setting up flathub"
       /run/current-system/sw/bin/flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo

@@ -1,5 +1,0 @@
-
-
-namespace application::resource {
-    template 
-}

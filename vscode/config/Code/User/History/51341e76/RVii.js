@@ -1,3 +1,0 @@
-
-
-const logEvents = new EventEmi

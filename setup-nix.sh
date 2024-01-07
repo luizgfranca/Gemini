@@ -14,6 +14,11 @@ cp .bash_git $HOME/
 echo "[Gemini] loading utility scripts"
 cp -r bin $HOME
 
+echo "[Gemini] installing vscode configFiles"
+cp vscode/config/settings.json "$HOME/.config/Code/User/"
+cp vscode/config/keybindings.json "$HOME/.config/Code/User/"
+cp -r vscode/config/snippets "$HOME/.config/Code/User/"
+
 echo "[Gemini] loading new configuration files"
 sudo cp configuration.nix /etc/nixos/
 sudo cp home-manager.nix /etc/nixos/

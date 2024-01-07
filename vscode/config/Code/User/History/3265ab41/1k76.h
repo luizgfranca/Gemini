@@ -1,7 +1,0 @@
-
-namespace application {
-    class SismApplication {
-        
-    };
-}
-

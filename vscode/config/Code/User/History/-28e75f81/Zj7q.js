@@ -1,6 +1,0 @@
-function setupNode() {
-    
-}
-
-
-export { setupNode }

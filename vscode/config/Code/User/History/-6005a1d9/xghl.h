@@ -1,1 +1,0 @@
-#define EVENT_FILE "./data";

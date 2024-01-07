@@ -1,4 +1,0 @@
-
-
-namespace provider::dbus::systemd {
-}
