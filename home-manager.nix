@@ -47,7 +47,7 @@ in
       configFile."kwinrc"."ModifierOnlyShortcuts"."Meta" = "org.kde.kglobalaccel,/component/kwin,,invokeShortcut,Overview";     
       configFile."ksmserverrc"."General"."loginMode" = "emptySession";
       configFile."kdeglobals"."General"."AccentColor" = "silver";
-     
+      configFile."konsolerc"."Desktop Entry"."DefaultProfile" = "custom.profile"; 
     };
     programs.bash = {
       enable = true;

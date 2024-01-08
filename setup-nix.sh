@@ -33,5 +33,11 @@ then
 	sleep 1
 fi;
 
+if type konsole >> /dev/null;
+then 
+	echo "[Gemini] installing konsole profile config files"
+	cp -r konsole "$HOME/.local/share/"
+fi;
+
 echo "[Gemini] done";
 
