@@ -39,5 +39,8 @@ then
 	cp -r konsole "$HOME/.local/share/"
 fi;
 
+echo "[Gemini] reloading bash profile"
+source $HOME/.cbashrc
+
 echo "[Gemini] done";
 

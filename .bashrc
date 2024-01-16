@@ -39,6 +39,7 @@ alias gb='git checkout'
 alias gc='git commit'
 alias gp='git pull --rebase'
 alias python='python3'
+alias nv='nvim'
 
 if test -f "$HOME/.cargo/env";
 then
