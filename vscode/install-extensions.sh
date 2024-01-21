@@ -29,3 +29,4 @@ code --install-extension ms-python.vscode-pylance
 code --install-extension ms-vscode.cmake-tools
 code --install-extension twxs.cmake
 code --install-extension zxh404.vscode-proto3
+code --install-extension MichaelZhou.fleet-theme

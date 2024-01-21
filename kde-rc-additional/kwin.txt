@@ -1,0 +1,7 @@
+
+[Desktops]
+Number=4
+Rows=1
+
+[ModifierOnlyShortcuts]
+Meta=org.kde.kglobalaccel,/component/kwin,,invokeShortcut,Overview
