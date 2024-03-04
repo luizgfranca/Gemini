@@ -1,0 +1,1 @@
+tmux attach -t "$(tmux ls | awk -F ':' '{print $1}' | fzf)"

@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+MATCHER="$1"
+REPLACE_STR="$2"
+for NAME in $(ls); do
+	NEW_NAME=${NAME/$MATCHER/$REPLACE_STR}
+	echo "$NAME -> $NEW_NAME"
+
+	mv "$NAME" "$NEW_NAME"
+done;

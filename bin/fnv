@@ -1,0 +1,6 @@
+FILE=$(fzf)
+
+if [ -n "${FILE}" ]; then
+	nvim $FILE
+fi
+

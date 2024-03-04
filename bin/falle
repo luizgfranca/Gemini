@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TEMP_FILE=$(mktemp)
+fall $1 | fzf > $TEMP_FILE
+
+FILE_NAME=$(cat $TEMP_FILE | awk -F ':' '{print $1}')
+LINE_NUMBER=$(cat $TEMP_FILE | awk -F ':' '{print $2}')
+
+if [ -n "${FILE_NAME}" ]; then
+	nvim +$LINE_NUMBER $FILE_NAME
+fi
