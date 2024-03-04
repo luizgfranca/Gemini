@@ -90,8 +90,10 @@ kwriteconfig5 --file kwinrc --group Desktops --key Rows "1";
 kwriteconfig5 --file ksmserverrc --group General --key loginMode "emptySession";
 kwriteconfig5 --file kdeglobals --group General --key AccentColor "silver";
 kwriteconfig5 --file konsolerc --group Desktop Entry --key DefaultProfile "custom.profile"; 
+kwriteconfig5 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnLeft "X"; 
+kwriteconfig5 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnRight "M"; 
 
-kwriteconfig5 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Left" "none,Meta+Left,Switch One Desktop to the Left";
+#kwriteconfig5 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Left" "none,Meta+Left,Switch One Desktop to the Left";
 #kwriteconfig5 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Right" "Meta+Right"; 
 #kwriteconfig5 --file kglobalshortcutsrc --group kwin --key "Window Quick Tile Left" "Meta+Shift+Left";
 #kwriteconfig5 --file kglobalshortcutsrc --group kwin --key "Window Quick Tile Right" "Meta+Shift+Right";

@@ -40,6 +40,7 @@ alias gc='git commit'
 alias gp='git pull --rebase'
 alias python='python3'
 alias nv='nvim'
+alias gpsoc='git push origin $(__git_ps1 "%s")'
 
 if test -f "$HOME/.cargo/env";
 then
