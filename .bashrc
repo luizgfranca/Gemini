@@ -42,6 +42,8 @@ alias python='python3'
 alias nv='nvim'
 alias gpsoc='git push origin $(__git_ps1 "%s")'
 
+export PROMPT_COMMAND='history -a'
+
 if test -f "$HOME/.cargo/env";
 then
 	. "$HOME/.cargo/env"
