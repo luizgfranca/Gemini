@@ -1,0 +1,5 @@
+default_session = "source"
+
+[[search_dirs]]
+path = "/home/luiz/source"
+depth = 2

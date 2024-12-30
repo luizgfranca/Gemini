@@ -1,2 +1,2 @@
 #!/bin/bash
-tmux capture-pane -p | nvim
+tmux capture-pane -pS -32768 | nvim +99999999

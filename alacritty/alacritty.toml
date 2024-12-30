@@ -1,0 +1,27 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/custom.toml"
+]
+
+[font]
+size = 16.0
+
+[font.normal]
+style = "semibold"
+family = "Liberation Mono"
+
+#[keyboard]
+#bindings = [
+#  { key = "E", mods = "Control", action = "ReceiveChar" },
+#]
+
+[keyboard]
+bindings = [
+    { key = "E", mods = "Control", action = "ReceiveChar" }
+]
+# Font config:
+#Font:
+#    # Normal (roman)kk:
+#    normal:
+#        family: Liberation Mono
+#        style: Regular
