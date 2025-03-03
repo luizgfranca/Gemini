@@ -1,15 +1,15 @@
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/custom.toml"
+    "~/.config/alacritty/themes/custom.toml"
 ]
 
 [font]
-size = 16.0
+size = 14.0
 
 [font.normal]
-style = "semibold"
-family = "Liberation Mono"
-
+# style = "semibold"
+style = "normal"
+family = "Iosevka SS04"
 #[keyboard]
 #bindings = [
 #  { key = "E", mods = "Control", action = "ReceiveChar" },

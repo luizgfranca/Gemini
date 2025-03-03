@@ -57,15 +57,15 @@ export NVM_DIR="$HOME/.nvm"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/luiz/anaconda3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
+__conda_setup="$('/home/luiz/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
+    eval "$__conda_setup"
 else
-  if [ -f "/home/luiz/anaconda3/etc/profile.d/conda.sh" ]; then
-    . "/home/luiz/anaconda3/etc/profile.d/conda.sh"
-  else
-    export PATH="/home/luiz/anaconda3/bin:$PATH"
-  fi
+    if [ -f "/home/luiz/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/luiz/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/luiz/anaconda3/bin:$PATH"
+    fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
@@ -76,7 +76,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 export GIT_EDITOR=nvim
 
-# bun
 export BUN_INSTALL="$HOME/.bun"
 export VCPKG_ROOT="$HOME/vcpkg"
 export PATH=$BUN_INSTALL/bin:$PATH
