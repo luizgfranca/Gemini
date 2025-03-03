@@ -1,0 +1,21 @@
+#!/bin/env python
+import os
+import sys
+
+def main():
+    if len(sys.argv) < 3:
+        print("Usage: python script.py <findstr> <replacestr>")
+        sys.exit(1)
+    
+    findstr = sys.argv[1]
+    replacestr = sys.argv[2]
+    
+    for filename in os.listdir('.'):
+        if findstr in filename:
+            new_filename = filename.replace(findstr, replacestr)
+            os.rename(filename, new_filename)
+            print(f'Renamed: "{filename}" -> "{new_filename}"')
+
+if __name__ == "__main__":
+    main()
+
