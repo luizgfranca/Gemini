@@ -8,11 +8,13 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- make nvim always use system clipboard for stuff
-vim.keymap.set("n", "p", "\"+p")
-vim.keymap.set("v", "p", "\"+p")
-vim.keymap.set("n", "y", "\"+y")
-vim.keymap.set("v", "y", "\"+y")
-vim.keymap.set("n", "Y", "\"+Y")
+-- vim.keymap.set("n", "p", "\"+p")
+-- vim.keymap.set("v", "p", "\"+p")
+-- vim.keymap.set("n", "y", "\"+y")
+-- vim.keymap.set("v", "y", "\"+y")
+-- vim.keymap.set("n", "Y", "\"+Y")
+
+vim.opt.clipboard = "unnamedplus"
 
 vim.keymap.set("n", "<leader>lf", function() 
     vim.lsp.buf.format()
