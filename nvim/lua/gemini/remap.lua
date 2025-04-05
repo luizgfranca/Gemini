@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 -- open oil as explorer
 -- vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>")
 vim.keymap.set("n", "<leader>ne", vim.cmd.Ex)
+ -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -36,3 +37,20 @@ vim.keymap.set("n", "<leader>qq", "<cmd>q!<CR>")
 -- resize window panels
 vim.keymap.set("n", "<leader>ll", "10<C-w>><CR>")
 vim.keymap.set("n", "<leader>hh", "10<C-w><<CR>")
+
+vim.keymap.set("n", "gi", "gF")
+
+vim.keymap.set('n', '<leader>ff', function()
+    local input = vim.fn.input("fall ")
+    if input ~= '' then 
+        vim.cmd('new | r ! fall ' .. input)
+        -- vim.opt_local.readonly = true
+        vim.api.nvim_buf_set_option(0, "modified", false)
+        -- vim.api.nvim_buf_set_option(0, 'modifiable', false)
+        return
+    end
+end)
+
+
+
+
