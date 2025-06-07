@@ -1,33 +1,56 @@
 #!/bin/env bash
-:a
-
 set -e
 #set -v
 #set -x
 
 echo "[Gemini] preparing"
+sudo dnf clean
 sudo dnf update
+
+echo "[Gemini] installing basic libraries and utilities" 
+sudo dnf install -y \
+    autoconf-archive \ 
+    automake \
+    ccache \
+    clang \
+    clangd \
+    cmake \ 
+    curl \ 
+    liberation-sans-fonts \ 
+    libglvnd-devel \ 
+    nasm \ 
+    ninja-build \ 
+    perl-FindBin \ 
+    perl-IPC-Cmd \ 
+    perl-lib \ 
+    tar \ 
+    unzip \ 
+    zip \ 
+    zlib-ng-compat-static \
+    git \
+    libxcrypt-compat \
+    pre-commit
+
 
 echo "[Gemini] instaling packages"
 sudo dnf install -y \
     neovim \
-    curl \
     podman \
-    distrobox \
     qbittorrent \
     flatpak \
-    neovim \
     tmux \
-    clang \
     cmake \
     alacritty \
     tldr \
     vlc \
     fzf \
-    clangd 
+    hugo
 
-
-
+echo "[Gemini] Installing Docker"
+sudo dnf -y install dnf-plugins-core
+sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG docker $USER
 
 if ! type code >> /dev/null;
 then
@@ -39,17 +62,21 @@ then
 	cd ..
 fi;
 
-# if ! type insomnium >> /dev/null;
-# then
+if ! type insomnium >> /dev/null;
+then
 	echo "[Gemini] installing insomnium"
 	mkdir -p workdir
 	cd workdir
 	curl --location 'https://github.com/ArchGPT/insomnium/releases/download/core%400.2.3-a/Insomnium.Core-0.2.3-a.rpm' > insomnium.rpm
 	sudo dnf install -y ./insomnium.rpm
 	cd ..
-# fi;
+fi;
 
-
+if ! type brave-browser >> /dev/null;
+then
+    echo "[Gemini] Installing Brave Browser"
+    curl -fsS https://dl.brave.com/install.sh | sh
+fi;
 
 echo "[Gemini] installing sdkman"
 curl -s "https://get.sdkman.io" | bash
@@ -60,12 +87,23 @@ cd workdir
 curl --location 'https://go.dev/dl/go1.23.4.linux-amd64.tar.gz' > go.tar.gz
 rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go.tar.gz
 cd ..
+sudo dnf install -y gopls
 
 echo "[Gemini] installing Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo dnf install rust-analyzer
 
-echo "[Gemini] installing nvm"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+if ! type nvm >> /dev/null;
+then
+    echo "[Gemini] installing nvm"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+fi;
+
+if ! type bun >> /dev/null;
+then
+    echo "[Gemini] Installing Bun"
+    curl -fsSL https://bun.sh/install | bash
+fi;
 
 echo "[Gemini] setting up flathub"
 flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -75,8 +113,10 @@ flatpak install -y flathub \
 	md.obsidian.Obsidian \
 	com.discordapp.Discord \
 	com.protonvpn.www \
-	io.dbeaver.DBeaverCommunity
-
+	io.dbeaver.DBeaverCommunity \
+    com.google.Chrome \
+    net.mullvad.MullvadBrowser \
+    app.drey.Warp
 
 echo '[Gemini] Creating utility script files'
 mkdir -p "$HOME/bin"
@@ -88,7 +128,7 @@ cp "$HOME"/.bashrc "$HOME"/.bashrc-original
 cp .bashrc "$HOME"
 cp .bash_git "$HOME"
 
-echo '[Gemini] Setting tmux'
+echo '[Gemini] Setting up tmux'
 cp .tmux.conf "$HOME"
 
 echo "[Gemini] installing vscode extensions"
@@ -109,19 +149,28 @@ cp -r tms "$HOME/.config/"
 echo "[Gemini] konsole..."
 cp -r konsole "$HOME/.config/"
 
-echo '[Gemini] setting up JetBrains editors'
+echo '[Gemini] jetbrains...'
 cp -r JetBrains "$HOME"/.config
 
-echo '[Gemini] setting up keyboard shortcuts'
-kwriteconfig5 --file kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.krunner,/App,,invokeShortcut,Overview"
+echo "[Gemini] installing fonts"
+sudo cp -r fonts/iosevka-ss18 /usr/share/fonts
+sudo cp -r fonts/iosevka-ss04 /usr/share/fonts   
+sudo cp -r fonts/Inter-4.1 /usr/share/fonts
 
-kwriteconfig5 --file kwinrc --group Desktops --key Number "4"; 
-kwriteconfig5 --file kwinrc --group Desktops --key Rows "1"; 
-kwriteconfig5 --file ksmserverrc --group General --key loginMode "emptySession";
-kwriteconfig5 --file kdeglobals --group General --key AccentColor "silver";
-kwriteconfig5 --file konsolerc --group Desktop Entry --key DefaultProfile "custom.profile"; 
-kwriteconfig5 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnLeft "X"; 
-kwriteconfig5 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnRight "M"; 
+echo '[Gemini] setting up KDE Plasma configuration'
+if [[ "$DESKTOP_SESSION" == "plasma" ]] || [[ "$XDG_CURRENT_DESKTOP" == "KDE" ]]; then
+    kwriteconfig5 --file kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.krunner,/App,,invokeShortcut,Overview"
+
+    kwriteconfig5 --file kwinrc --group Desktops --key Number "4"; 
+    kwriteconfig5 --file kwinrc --group Desktops --key Rows "1"; 
+    kwriteconfig5 --file ksmserverrc --group General --key loginMode "emptySession";
+    kwriteconfig5 --file kdeglobals --group General --key AccentColor "silver";
+    kwriteconfig5 --file konsolerc --group Desktop Entry --key DefaultProfile "custom.profile"; 
+    kwriteconfig5 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnLeft "X"; 
+    kwriteconfig5 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnRight "M"; 
+else
+    echo "System is not running KDE Plasma. Skipping"
+fi
 
 #kwriteconfig5 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Left" "none,Meta+Left,Switch One Desktop to the Left";
 #kwriteconfig5 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Right" "Meta+Right"; 
