@@ -1,2 +1,0 @@
-#!/bin/bash
-tmux capture-pane -pS -32768 | nvim
