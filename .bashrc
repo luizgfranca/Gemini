@@ -84,5 +84,6 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:"$HOME/templ"
 export PATH=$PATH:"$HOME/.local/kitty.app/bin"
 export PATH=$PATH:"$HOME/idea/bin"
+export PATH=$PATH:"$HOME/clion/bin"
 
 export EDITOR='nvim'
