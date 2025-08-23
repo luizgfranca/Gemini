@@ -3,12 +3,12 @@ set -e
 #set -v
 #set -x
 
-echo "[Gemini] preparing"
-sudo dnf update
 
 if type dnf >> /dev/null;
 then
     echo "[Gemini] DNF system package manager detected"
+    echo "[Gemini] preparing"
+    sudo dnf update
 
     echo "[Gemini] installing basic libraries and utilities" 
     sudo dnf install -y \
@@ -47,6 +47,7 @@ fi;
 if type apt >> /dev/null;
 then
     echo "[Gemini] APT system package manager detected"
+    echo "[Gemini] preparing"
     sudo apt update
 
     echo "[Gemini] installing basic libraries and utilities" 
@@ -85,35 +86,82 @@ then
 fi;
 
 echo "[Gemini] Installing Docker"
-set -x
-sudo dnf -y install dnf-plugins-core
-sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo usermod -aG docker $USER
-set +x
-
-if ! type code >> /dev/null;
+if type dnf >> /dev/null;
 then
-	echo "[Gemini] installing vscode"
+    echo "[Gemini] Fedora adjacent system docker install"
     set -x
-	mkdir -p workdir
-	cd workdir
-	curl --location 'https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64' > code.rpm
-	sudo dnf install -y ./code.rpm
-	cd ..
+    sudo dnf -y install dnf-plugins-core
+    sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+    sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo usermod -aG docker $USER
     set +x
 fi;
 
+echo "[Gemini] Installing Docker"
+if type apt >> /dev/null;
+then
+    echo "[Gemini] Ubuntu adjacent system docker install"
+    set -x
+    # Add Docker's official GPG key:
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    # Add the repository to Apt sources:
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo usermod -aG docker $USER
+    set +x
+fi;
+
+
+
+# if ! type code >> /dev/null;
+# then
+# 	echo "[Gemini] installing vscode"
+#     set -x
+# 	mkdir -p workdir
+# 	cd workdir
+# 	curl --location 'https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64' > code.rpm
+# 	sudo dnf install -y ./code.rpm
+# 	cd ..
+#     set +x
+#
+#
+#   UBUNTU LINK https://vscode.download.prss.microsoft.com/dbazure/download/stable/2901c5ac6db8a986a5666c3af51ff804d05af0d4/code_1.101.2-1750797935_amd64.deb
+# fi;
+
 if ! type insomnium >> /dev/null;
 then
-	echo "[Gemini] installing insomnium"
-    set -x
-	mkdir -p workdir
-	cd workdir
-	curl --location 'https://github.com/ArchGPT/insomnium/releases/download/core%400.2.3-a/Insomnium.Core-0.2.3-a.rpm' > insomnium.rpm
-	sudo dnf install -y ./insomnium.rpm
-	cd ..
-    set +x
+    if type dnf >> /dev/null;
+    then
+        echo "[Gemini] installing insomnium"
+        set -x
+        mkdir -p workdir
+        cd workdir
+        curl --location 'https://github.com/ArchGPT/insomnium/releases/download/core%400.2.3-a/Insomnium.Core-0.2.3-a.rpm' > insomnium.rpm
+        sudo dnf install -y ./insomnium.rpm
+        cd ..
+        set +x
+    fi;
+    if type apt >> /dev/null;
+    then
+        echo "[Gemini] installing insomnium"
+        set -x
+        mkdir -p workdir
+        cd workdir
+        curl --location 'https://github.com/ArchGPT/insomnium/releases/download/core%400.2.3-a/Insomnium.Core-0.2.3-a.deb' > insomnium.deb
+        sudo apt install -y ./insomnium.deb
+        cd ..
+        set +x
+    fi;
 fi;
 
 if ! type brave-browser >> /dev/null;
@@ -132,14 +180,24 @@ cd workdir
 curl --location 'https://go.dev/dl/go1.23.4.linux-amd64.tar.gz' > go.tar.gz
 rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go.tar.gz
 cd ..
-sudo dnf install -y gopls
+
+if type dnf >> /dev/null;
+then
+    sudo dnf install -y gopls
+fi;
+
+if type apt >> /dev/null;
+then
+    sudo apt install -y gopls
+fi;
 set +x
 
 echo "[Gemini] installing Rust"
-set -x
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
-sudo dnf install -y rust-analyzer
-set +x
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs
+if type dnf >> /dev/null;
+then
+    sudo dnf install -y rust-analyzer
+fi;
 
 if ! type nvm >> /dev/null;
 then
@@ -158,7 +216,7 @@ set -x
 flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 set +x
 
-if ! type bun >> /dev/null;
+if type apt >> /dev/null;
 then
     echo "[Gemini] installing flathub discover plugin"
     set -x
@@ -198,18 +256,18 @@ set -x
 cp .tmux.conf "$HOME"
 set +x
 
-echo "[Gemini] installing vscode extensions"
-set -x
-sh vscode/install-extensions.sh
-set +x
+# echo "[Gemini] installing vscode extensions"
+# set -x
+# sh vscode/install-extensions.sh
+# set +x
 
 echo "[Gemini] placing application config:"
-echo "[Gemini] vscode..."
-set -x
+# echo "[Gemini] vscode..."
+# set -x
 cp vscode/config/settings.json "$HOME/.config/Code/User/"
 cp vscode/config/keybindings.json "$HOME/.config/Code/User/"
 cp -r vscode/config/snippets "$HOME/.config/Code/User/"
-set +x
+# set +x
 
 echo "[Gemini] alacritty..."
 set -x
@@ -261,7 +319,7 @@ else
 fi
 
 echo '[Gemini] setting up Gnome Shell configuration'
-if [[ "$DESKTOP_SESSION" == "gnome" ]] || [[ "$XDG_CURRENT_DESKTOP" == "KDE" ]]; then
+if [[ "$DESKTOP_SESSION" == "gnome" ]]; then
     set -x
     dconf write /org/gnome/desktop/wm/keybindings/minimize "@as []"
     dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "@as []"
@@ -326,6 +384,13 @@ if type kwin_x11 >> /dev/null;
 then
 	echo "[Gemini] Restarting user's KWin for configuration to take effect"
 	nohup kwin_x11 --replace > /dev/null &
+	sleep 1
+fi;
+
+if type kwin_wayland >> /dev/null;
+then
+	echo "[Gemini] Restarting user's KWin for configuration to take effect"
+	nohup kwin_wayland --replace > /dev/null &
 	sleep 1
 fi;
 
