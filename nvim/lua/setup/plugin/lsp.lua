@@ -41,7 +41,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- These are example language servers. 
 require('lspconfig').gopls.setup({})
 require('lspconfig').ts_ls.setup({})
-require'lspconfig'.rust_analyzer.setup{}
+require('lspconfig').rust_analyzer.setup{}
+require('lspconfig').cssls.setup{}
+require('lspconfig').html.setup{}
+
+-- link compile_commands
+-- ln -s /path/to/myproject/build/compile_commands.json /path/to/myproject/
+require('lspconfig').clangd.setup{}
 
 local cmp = require('cmp')
 
