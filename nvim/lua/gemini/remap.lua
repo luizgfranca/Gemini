@@ -43,7 +43,7 @@ vim.keymap.set("n", "gi", "gF")
 vim.keymap.set('n', '<leader>ff', function()
     local input = vim.fn.input("fall ")
     if input ~= '' then 
-        vim.cmd('new | r ! fall ' .. input)
+        vim.cmd('new | r ! fall "' .. input .. '"')
         -- vim.opt_local.readonly = true
         vim.api.nvim_buf_set_option(0, "modified", false)
         -- vim.api.nvim_buf_set_option(0, 'modifiable', false)

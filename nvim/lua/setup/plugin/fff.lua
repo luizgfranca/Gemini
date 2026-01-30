@@ -1,0 +1,3 @@
+require('fff').setup({
+    prompt = '> ',
+})

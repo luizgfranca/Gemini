@@ -1,4 +1,4 @@
-require("setup.plugin.telescope")
+-- require("setup.plugin.telescope")
 require("setup.plugin.treesitter")
 require("setup.plugin.harpoon")
 require("setup.plugin.undotree")
@@ -7,6 +7,7 @@ require("setup.plugin.lsp")
 require("setup.plugin.autoclose")
 require("setup.plugin.mini-surround")
 require("setup.plugin.messenger")
+require("setup.plugin.fff")
 -- require("setup.plugin.gruvbox")
 
 require('gruvbox').setup({
