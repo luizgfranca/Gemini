@@ -1,2 +1,3 @@
-#!/bin/bash
-grep -rn "$1" *
+#!/usr/bin/env bash
+#grep --exclude-dir="Build" -rni "$1" *
+rg --vimgrep "$1"

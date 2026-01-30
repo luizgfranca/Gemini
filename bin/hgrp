@@ -1,1 +1,1 @@
-history | grep $1 | nvim
+history | grep -i "$1" | nvim
