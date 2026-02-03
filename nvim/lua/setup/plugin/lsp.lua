@@ -40,15 +40,28 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- You'll find a list of language servers here:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- These are example language servers. 
-require('lspconfig').gopls.setup({})
-require('lspconfig').ts_ls.setup({})
-require('lspconfig').rust_analyzer.setup{}
-require('lspconfig').cssls.setup{}
-require('lspconfig').html.setup{}
+-- require('lspconfig').gopls.setup({})
+vim.lsp.config('gopls', {})
+vim.lsp.enable('gopls')
+-- require('lspconfig').ts_ls.setup({})
+vim.lsp.config('ts_ls', {})
+vim.lsp.enable('ts_ls')
+-- require('lspconfig').rust_analyzer.setup{}
+vim.lsp.config('rust_analyzer', {})
+vim.lsp.enable('rust_analyzer')
+-- require('lspconfig').cssls.setup{}
+vim.lsp.config('cssls', {})
+vim.lsp.enable('cssls')
+-- require('lspconfig').html.setup{}
+vim.lsp.config('html', {})
+vim.lsp.enable('html')
 
 -- link compile_commands
 -- ln -s /path/to/myproject/build/compile_commands.json /path/to/myproject/
-require('lspconfig').clangd.setup{}
+-- require('lspconfig').clangd.setup{}
+vim.lsp.config('clangd', {})
+vim.lsp.enable('clangd')
+
 
 local cmp = require('cmp')
 
