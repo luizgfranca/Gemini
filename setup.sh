@@ -37,11 +37,10 @@ then
         flatpak \
         tmux \
         cmake \
-        alacritty \
-        tldr \
         vlc \
         fzf \
-        hugo
+        hugo \
+        ripgrep
 fi;
 
 if type apt >> /dev/null;
@@ -78,65 +77,106 @@ then
         flatpak \
         tmux \
         cmake \
-        alacritty \
-        tldr \
         vlc \
         fzf \
-        hugo
+        hugo \
+        ripgrep
 fi;
 
-echo "[Gemini] Installing Docker"
-if type dnf >> /dev/null;
+if type pacman >> /dev/null;
 then
-    echo "[Gemini] Fedora adjacent system docker install"
-    set -x
-    sudo dnf -y install dnf-plugins-core
-    sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-    sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-    sudo usermod -aG docker $USER
-    set +x
+    echo "[Gemini] Pacman system package manager detected"
+    echo "[Gemini] preparing"
+    sudo pacman -Syu --needed --noconfirm
+
+    echo "[Gemini] installing basic libraries and utilities"
+    sudo pacman -S --needed --noconfirm \
+        base-devel \
+        autoconf-archive \
+        automake \
+        ccache \
+        clang \
+        cmake \
+        curl \
+        ttf-liberation \
+        ninja \
+        perl \
+        tar \
+        unzip \
+        zip \
+        git \
+        libxcrypt \
+        pre-commit
+
+    echo "[Gemini] instaling packages"
+    sudo pacman -S --needed --noconfirm \
+        neovim \
+        podman \
+        qbittorrent \
+        steam \
+        flatpak \
+        tmux \
+        vlc \
+        fzf \
+        hugo \
+        ripgrep \
+        go \
+        gopls \
+        kitty \
+        rustup \
+        bun \
+        code \
+        intellij-idea-community-edition \
+        scrcpy
 fi;
 
-echo "[Gemini] Installing Docker"
-if type apt >> /dev/null;
+
+if ! type docker >> /dev/null;
 then
-    echo "[Gemini] Ubuntu adjacent system docker install"
-    set -x
-    # Add Docker's official GPG key:
-    sudo apt-get update
-    sudo apt-get install ca-certificates curl
-    sudo install -m 0755 -d /etc/apt/keyrings
-    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-    sudo chmod a+r /etc/apt/keyrings/docker.asc
+    echo "[Gemini] Installing Docker"
+    if type dnf >> /dev/null;
+    then
+        echo "[Gemini] Fedora adjacent system docker install"
+        set -x
+        sudo dnf -y install dnf-plugins-core
+        sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+        sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+        sudo usermod -aG docker $USER
+        set +x
+    fi;
 
-    # Add the repository to Apt sources:
-    echo \
-    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-    $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt-get update
+    if type apt >> /dev/null;
+    then
+        echo "[Gemini] Ubuntu adjacent system docker install"
+        set -x
+        # Add Docker's official GPG key:
+        sudo apt-get update
+        sudo apt-get install ca-certificates curl
+        sudo install -m 0755 -d /etc/apt/keyrings
+        sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+        sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-    sudo usermod -aG docker $USER
-    set +x
+        # Add the repository to Apt sources:
+        echo \
+        "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+        $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+        sudo apt-get update
+
+        sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+        sudo usermod -aG docker $USER
+        set +x
+    fi;
+
+    if type pacman >> /dev/null;
+    then
+        echo "[Gemini] Arch adjacent system docker install"
+        set -x
+        sudo pacman -S --needed --noconfirm docker
+        sudo usermod -aG docker $USER
+        set +x
+    fi;
 fi;
-
-
-
-# if ! type code >> /dev/null;
-# then
-# 	echo "[Gemini] installing vscode"
-#     set -x
-# 	mkdir -p workdir
-# 	cd workdir
-# 	curl --location 'https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64' > code.rpm
-# 	sudo dnf install -y ./code.rpm
-# 	cd ..
-#     set +x
-#
-#
-#   UBUNTU LINK https://vscode.download.prss.microsoft.com/dbazure/download/stable/2901c5ac6db8a986a5666c3af51ff804d05af0d4/code_1.101.2-1750797935_amd64.deb
-# fi;
 
 if ! type insomnium >> /dev/null;
 then
@@ -162,6 +202,20 @@ then
         cd ..
         set +x
     fi;
+
+    if type pacman >> /dev/null;
+    then
+        echo "[Gemini] Installing insomnium from the AUR"
+        set -x
+        mkdir -p workdir
+        cd workdir
+        git clone https://aur.archlinux.org/insomnium-bin.git
+        cd insomnium-bin
+        makepkg --clean --syncdeps --install
+        cd .. # insomnium-bin
+        cd .. # workdir
+        set +x
+    fi;
 fi;
 
 if ! type brave-browser >> /dev/null;
@@ -170,16 +224,25 @@ then
     curl -fsS https://dl.brave.com/install.sh | sh
 fi;
 
-echo "[Gemini] installing sdkman"
-curl -s "https://get.sdkman.io" | bash
-source "$HOME/.sdkman/bin/sdkman-init.sh"
+if ! type sdk >> /dev/null;
+then
+    echo "[Gemini] installing sdkman"
+    set -x
+    curl -s "https://get.sdkman.io" | bash
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    set +x
+fi;
 
-echo "[Gemini] installing golang"
-set -x
-cd workdir
-curl --location 'https://go.dev/dl/go1.23.4.linux-amd64.tar.gz' > go.tar.gz
-rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go.tar.gz
-cd ..
+if ! type go >> /dev/null && ! type pacman >> /dev/null;
+then
+    echo "[Gemini] installing golang"
+    set -x
+    cd workdir
+    curl --location 'https://go.dev/dl/go1.23.4.linux-amd64.tar.gz' > go.tar.gz
+    rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go.tar.gz
+    set +x
+    cd ..
+fi;
 
 if type dnf >> /dev/null;
 then
@@ -192,11 +255,23 @@ then
 fi;
 set +x
 
-echo "[Gemini] installing Rust"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs
+if type rustup >> /dev/null && ! type pacman >> /dev/null;
+then
+    echo "[Gemini] installing Rust (path only taken if not Arch based OS)"
+    set -x
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs
+    set +x
+fi;
+
 if type dnf >> /dev/null;
 then
     sudo dnf install -y rust-analyzer
+fi;
+
+if ! type rust-analyzer;
+then
+    rustup default stable
+    rustup component add rust-analyzer
 fi;
 
 if ! type nvm >> /dev/null;
@@ -205,9 +280,9 @@ then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 fi;
 
-if ! type bun >> /dev/null;
+if ! type bun >> /dev/null && ! type pacman >> /dev/null;
 then
-    echo "[Gemini] Installing Bun"
+    echo "[Gemini] Installing Bun (only for non-Arch systems)"
     curl -fsSL https://bun.sh/install | bash
 fi;
 
@@ -218,7 +293,7 @@ set +x
 
 if type apt >> /dev/null;
 then
-    echo "[Gemini] installing flathub discover plugin"
+    echo "[Gemini] installing flathub discover plugin (Kubuntu workaround)"
     set -x
     sudo apt install flatpak plasma-discover-backend-flatpak
     set +x
@@ -234,8 +309,24 @@ flatpak install --system -y flathub \
 	io.dbeaver.DBeaverCommunity \
     com.google.Chrome \
     net.mullvad.MullvadBrowser \
-    app.drey.Warp
+    app.drey.Warp \
+    com.protonvpn.www
 set +x
+
+
+if ! type automata >> /dev/null;
+then
+    echo "[Gemini] installing latest automata build"
+    set -x
+    cd workdir
+    git clone --depth=1 https://github.com/luizgfranca/automata.git 
+    cd automata
+    cargo build --release
+    sudo cp target/release/automata "$HOME/bin"
+    cd .. # automata
+    cd .. # workdir
+    set +x
+fi;
 
 echo '[Gemini] Creating utility script files'
 set -x
@@ -262,16 +353,22 @@ set +x
 # set +x
 
 echo "[Gemini] placing application config:"
-# echo "[Gemini] vscode..."
-# set -x
+echo "[Gemini] vscode..."
+set -x
+mkdir -p "$HOME/.config/Code/User/"
 cp vscode/config/settings.json "$HOME/.config/Code/User/"
 cp vscode/config/keybindings.json "$HOME/.config/Code/User/"
 cp -r vscode/config/snippets "$HOME/.config/Code/User/"
+set +x
+
+# echo "[Gemini] alacritty..."
+# set -x
+# cp -r alacritty "$HOME/.config/"
 # set +x
 
-echo "[Gemini] alacritty..."
+echo "[Gemini] kitty..."
 set -x
-cp -r alacritty "$HOME/.config/"
+cp -r kitty "$HOME/.config/"
 set +x
 
 echo "[Gemini] tms..."
@@ -292,7 +389,17 @@ set +x
 echo "[Gemini] neovim..."
 set -x
 cp -r nvim "$HOME"/.config
+nvim --headless "+Lazy! update" +qa
+pushd "$HOME"/.local/share/nvim/lazy/fff.nvim
+cargo build
+popd
 set +x
+
+if type konsole >> /dev/null;
+then
+	echo "[Gemini] konsole..."
+	cp -r konsole "$HOME/.local/share/"
+fi;
 
 echo "[Gemini] installing fonts"
 set -x
@@ -301,18 +408,44 @@ sudo cp -r fonts/iosevka-ss04 /usr/share/fonts
 sudo cp -r fonts/Inter-4.1 /usr/share/fonts
 set +x
 
+# if [ -d "fstab-lock" ]; then
+#     echo "[Gemini] setting up data partition auto mount"
+#     set -x
+#     sudo cp /etc/fstab /etc/fstab-bkp
+#     sudo echo "UUID=2AB2A0797364739B        /data                   ntfs-3g      rw 0 0" >> /etc/fstab
+#     touch fstab-lock
+#     set +x
+# fi;
+
+if [ -d "./BraveSoftware" ]; then
+    echo "[Gemini] Brave backup detected"
+    echo "[Gemini] restoring brave backup"
+    set -x
+    cp -r BraveSoftware "$HOME/.config/"
+    rm "$HOME/.config/BraveSoftware/Brave-Browser/SingletonLock" 
+    set +x
+
+    echo "[Gemini] marking restored backup"
+    set -x
+    mv BraveSoftware BraveSoftware-restored
+    set +x
+fi;
+
+
+
 echo '[Gemini] setting up KDE Plasma configuration'
 if [[ "$DESKTOP_SESSION" == "plasma" ]] || [[ "$XDG_CURRENT_DESKTOP" == "KDE" ]]; then
     set -x
-    kwriteconfig5 --file kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.krunner,/App,,invokeShortcut,Overview"
-
-    kwriteconfig5 --file kwinrc --group Desktops --key Number "4"; 
-    kwriteconfig5 --file kwinrc --group Desktops --key Rows "1"; 
-    kwriteconfig5 --file ksmserverrc --group General --key loginMode "emptySession";
-    kwriteconfig5 --file kdeglobals --group General --key AccentColor "silver";
-    kwriteconfig5 --file konsolerc --group Desktop Entry --key DefaultProfile "custom.profile"; 
-    kwriteconfig5 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnLeft "X"; 
-    kwriteconfig5 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnRight "M"; 
+    mv "$HOME/.config/kglobalshortcutsrc" "$HOME/.config/kglobalshortcutsrc-old"
+    cp kglobalshortcutsrc "$HOME/.config"
+#    kwriteconfig6 --file kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.krunner,/App,,invokeShortcut,Overview" --notify;
+    kwriteconfig6 --file kwinrc --group Desktops --key Number "4" --notify;
+    kwriteconfig6 --file kwinrc --group Desktops --key Rows "1" --notify;
+    kwriteconfig6 --file ksmserverrc --group General --key loginMode "emptySession" --notify;
+#     kwriteconfig5 --file kdeglobals --group General --key AccentColor "silver";
+    kwriteconfig6 --file konsolerc --group Desktop Entry --key DefaultProfile "custom.profile" --notify;
+    kwriteconfig6 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnLeft "X" --notify;
+    kwriteconfig6 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnRight "M" --notify;
     set +x
 else
     echo "System is not running KDE Plasma. Skipping"
@@ -386,19 +519,14 @@ then
 	nohup kwin_x11 --replace > /dev/null &
 	sleep 1
 fi;
+#
+# if type kwin_wayland >> /dev/null;
+# then
+# 	echo "[Gemini] Restarting user's KWin for configuration to take effect"
+# 	nohup kwin_wayland --replace > /dev/null &
+# 	sleep 1
+# fi;
 
-if type kwin_wayland >> /dev/null;
-then
-	echo "[Gemini] Restarting user's KWin for configuration to take effect"
-	nohup kwin_wayland --replace > /dev/null &
-	sleep 1
-fi;
-
-if type konsole >> /dev/null;
-then
-	echo "[Gemini] installing konsole profile config files"
-	cp -r konsole "$HOME/.local/share/"
-fi;
 
 echo "[Gemini] reloading bash profile"
 source $HOME/.bashrc
