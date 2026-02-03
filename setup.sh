@@ -416,14 +416,14 @@ sudo cp -r fonts/iosevka-ss04 /usr/share/fonts
 sudo cp -r fonts/Inter-4.1 /usr/share/fonts
 set +x
 
-# if [ -d "fstab-lock" ]; then
-#     echo "[Gemini] setting up data partition auto mount"
-#     set -x
-#     sudo cp /etc/fstab /etc/fstab-bkp
-#     sudo echo "UUID=2AB2A0797364739B        /data                   ntfs-3g      rw 0 0" >> /etc/fstab
-#     touch fstab-lock
-#     set +x
-# fi;
+if [ -d "workdir/fstab-lock" ]; then
+    echo "[Gemini] setting up data partition auto mount"
+    set -x
+    sudo cp /etc/fstab /etc/fstab-bkp
+    sudo echo "UUID=2AB2A0797364739B                    /data          ntfs    defaults,rw 0 0" >> /etc/fstab
+    touch workdir/fstab-lock
+    set +x
+fi;
 
 if [ -d "./BraveSoftware" ]; then
     echo "[Gemini] Brave backup detected"
