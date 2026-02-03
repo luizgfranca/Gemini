@@ -27,7 +27,8 @@ then
         zlib-ng-compat-static \
         git \
         libxcrypt-compat \
-        pre-commit
+        pre-commit \
+        ntfs-3g
 
     echo "[Gemini] instaling packages"
     sudo dnf install -y \
@@ -67,7 +68,8 @@ then
         zlib1g-dev \
         git \
         libcrypt-dev \
-        pre-commit
+        pre-commit \
+        ntfs-3g
 
     echo "[Gemini] instaling packages"
     sudo apt install -y \
@@ -108,7 +110,8 @@ then
         libxcrypt \
         pre-commit \
         wl-clipboard \
-        xclip
+        xclip \
+        ntfs-3g
 
     echo "[Gemini] instaling packages"
     sudo pacman -S --needed --noconfirm \
@@ -418,11 +421,11 @@ sudo cp -r fonts/iosevka-ss04 /usr/share/fonts
 sudo cp -r fonts/Inter-4.1 /usr/share/fonts
 set +x
 
-if [ -d "workdir/fstab-lock" ]; then
+if [ ! -d "workdir/fstab-lock" ]; then
     echo "[Gemini] setting up data partition auto mount"
     set -x
     sudo cp /etc/fstab /etc/fstab-bkp
-    sudo echo "UUID=2AB2A0797364739B                    /data          ntfs    defaults,rw 0 0" >> /etc/fstab
+    echo "UUID=2AB2A0797364739B                    /data          ntfs-3g    defaults,rw 0 0" | sudo tee --append /etc/fstab
     touch workdir/fstab-lock
     set +x
 fi;
