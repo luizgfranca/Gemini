@@ -106,7 +106,9 @@ then
         zip \
         git \
         libxcrypt \
-        pre-commit
+        pre-commit \
+        wl-clipboard \
+        xclip
 
     echo "[Gemini] instaling packages"
     sudo pacman -S --needed --noconfirm \
