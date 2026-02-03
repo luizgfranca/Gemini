@@ -337,11 +337,17 @@ cp bin/* "$HOME/bin/"
 chmod +x "$HOME"/bin/*
 set +x
 
-echo '[Gemini] Setting up bashrc'
+echo '[Gemini] Setting up bash'
 set -x
 cp "$HOME"/.bashrc "$HOME"/.bashrc-original
 cp .bashrc "$HOME"
 cp .bash_git "$HOME"
+cp .inputrc "$HOME"
+
+
+if [[ "$SHELL" != "/bin/bash" ]]; then
+    sudo chsh -s /bin/bash
+fi;
 set +x
 
 echo '[Gemini] Setting up tmux'
