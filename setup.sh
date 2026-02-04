@@ -455,11 +455,16 @@ if [[ "$DESKTOP_SESSION" == "plasma" ]] || [[ "$XDG_CURRENT_DESKTOP" == "KDE" ]]
 #    kwriteconfig6 --file kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.krunner,/App,,invokeShortcut,Overview" --notify;
     kwriteconfig6 --file kwinrc --group Desktops --key Number "4" --notify;
     kwriteconfig6 --file kwinrc --group Desktops --key Rows "1" --notify;
-    kwriteconfig6 --file ksmserverrc --group General --key loginMode "emptySession" --notify;
-#     kwriteconfig5 --file kdeglobals --group General --key AccentColor "silver";
-    kwriteconfig6 --file konsolerc --group Desktop Entry --key DefaultProfile "custom.profile" --notify;
     kwriteconfig6 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnLeft "X" --notify;
     kwriteconfig6 --file kwinrc --group "org.kde.kdecoration2" --key ButtonsOnRight "M" --notify;
+
+    kwriteconfig6 --file ksmserverrc --group General --key loginMode "emptySession" --notify;
+
+#     kwriteconfig5 --file kdeglobals --group General --key AccentColor "silver";
+    kwriteconfig6 --file konsolerc --group Desktop Entry --key DefaultProfile "custom.profile" --notify;
+
+    kwriteconfig6 --file kcminputrc --group Keyboard --key RepeatDelay "400" --notify;
+    kwriteconfig6 --file kcminputrc --group Keyboard --key RepeatRate "45" --notify;
     set +x
 else
     echo "System is not running KDE Plasma. Skipping"
