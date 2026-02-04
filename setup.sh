@@ -314,7 +314,8 @@ flatpak install --system -y flathub \
 	io.dbeaver.DBeaverCommunity \
     com.google.Chrome \
     net.mullvad.MullvadBrowser \
-    app.drey.Warp 
+    app.drey.Warp \
+    com.github.tchx84.Flatseal
 
 sudo flatpak override md.obsidian.Obsidian --filesystem="/data"
 sudo flatpak override com.discordapp.Discord --filesystem="/data"
