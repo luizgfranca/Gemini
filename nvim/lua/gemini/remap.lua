@@ -35,8 +35,8 @@ vim.keymap.set("n", "<C-x>", "<cmd>wq<CR>")
 vim.keymap.set("n", "<leader>qq", "<cmd>q!<CR>")
 
 -- resize window panels
-vim.keymap.set("n", "<leader>ll", "10<C-w>><CR>")
-vim.keymap.set("n", "<leader>hh", "10<C-w><<CR>")
+-- vim.keymap.set("n", "<leader>ll", "10<C-w>><CR>")
+-- vim.keymap.set("n", "<leader>hh", "10<C-w><<CR>")
 
 vim.keymap.set("n", "gi", "gF")
 

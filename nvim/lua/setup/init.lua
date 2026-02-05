@@ -5,35 +5,20 @@ require("setup.plugin.undotree")
 require("setup.plugin.lsp")
 require("setup.plugin.oil")
 require("setup.plugin.autoclose")
-require("setup.plugin.mini-surround")
+require("setup.plugin.mini")
 require("setup.plugin.messenger")
 require("setup.plugin.fff")
--- require("setup.plugin.gruvbox")
-
-require('gruvbox').setup({
-    contrast = "hard",
-    transparent_mode = true,
-    palette_overrides = {
-        light1 = "#fbf1c7",
-        bright_red = "#fb4934",
-        bright_green = "#b8bb26",
-        bright_yellow = "#fabd2f",
-        bright_blue = "#a1ccbc",
-        bright_purple = "#d3869b",
-        bright_aqua = "#8ec07c",
-        bright_orange = "#fe8019"
-    },
-    overrides = {
-        ["@function.method.call"] = { link = "GruvboxFg1" },
-        ["@punctuation.bracket"] = { link = "GruvboxFg1" },
-        ["@punctuation.delimiter"] = { link = "GruvboxFg1" }
-    }
-})
 
 vim.opt.termguicolors = true
 -- vim.cmd.colorscheme("oldworld")
 -- vim.cmd.colorscheme("gruvbox")
 vim.cmd.colorscheme 'gruber-darker'
+vim.api.nvim_set_hl(0, "String", { fg = "#a670e0" })
+vim.api.nvim_set_hl(0, "@string", { fg = "#a670e0" })
+-- vim.api.nvim_set_hl(0, "GruberDarkerYellowBold", { fg = "#ffc633" })
+vim.api.nvim_set_hl(0, "GruberDarkerYellowBold", { fg = "#ffda33", bold = true })
+vim.api.nvim_set_hl(0, "GruberDarkerYellow", { fg = "#ffda33" })
+
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "Function", { fg = "white" })
@@ -57,3 +42,7 @@ vim.api.nvim_set_hl(0, "@tag.delimiter", { link = 'GruberDarkerQuartz' })
 vim.api.nvim_set_hl(0, "Type", { link = 'GruberDarkerQuartz' })
 
 vim.api.nvim_set_hl(0, "@property.json", {})
+
+vim.api.nvim_set_hl(0, "rustString", { fg = "#a670e0" })
+vim.api.nvim_set_hl(0, "rustStringDelimiter", { fg = "#a670e0" })
+vim.api.nvim_set_hl(0, "rustSigil", { link = "GruberDarkerQuartz" })
