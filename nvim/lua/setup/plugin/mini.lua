@@ -4,6 +4,6 @@ require('mini.basics').setup({
         basic = false
     },
     mappings = {
-        windows = true,
+        windows = false,
     }
 })
