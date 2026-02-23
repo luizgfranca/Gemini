@@ -44,8 +44,17 @@ alias nv='nvim'
 alias gpsoc='git push origin $(__git_ps1 "%s")'
 alias gpoc='git pull --rebase origin $(__git_ps1 "%s")'
 alias ll='ls -la --color=auto'
+alias s='prj'
 
 export PROMPT_COMMAND='history -a'
+
+prj() {
+    SELECTED=$({ find "$HOME/source" -maxdepth 1; find "$HOME/projects" -maxdepth 1; } | fzf)
+
+    if [ -n "$SELECTED" ]; then
+        cd "$SELECTED"
+    fi;
+}
 
 if test -f "$HOME/.cargo/env"; then
   . "$HOME/.cargo/env"
