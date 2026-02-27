@@ -49,10 +49,20 @@ alias s='prj'
 export PROMPT_COMMAND='history -a'
 
 prj() {
-    SELECTED=$({ find "$HOME/source" -maxdepth 1; find "$HOME/projects" -maxdepth 1; } | fzf)
+    SELECTED=$({ find "$HOME/source" -maxdepth 1; find "$HOME/projects" -maxdepth 1; } | fzf \
+        --layout=reverse \
+        --margin=5 \
+        --highlight-line  \
+        --style=full \
+        --border=bold --color="bg+:#444444,pointer:#af5fff")
 
     if [ -n "$SELECTED" ]; then
         cd "$SELECTED"
+        NAME="${PWD##*/}"
+        if type kitty &> /dev/null;
+        then
+            kitten @ set-tab-title $NAME
+        fi;
     fi;
 }
 
