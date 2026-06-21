@@ -8,6 +8,7 @@ require("setup.plugin.autoclose")
 require("setup.plugin.mini")
 require("setup.plugin.messenger")
 require("setup.plugin.fff")
+require("setup.plugin.vim-kitty-navigator")
 
 vim.opt.termguicolors = true
 -- vim.cmd.colorscheme("oldworld")

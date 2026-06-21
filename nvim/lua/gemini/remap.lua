@@ -14,7 +14,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- vim.keymap.set("n", "y", "\"+y")
 -- vim.keymap.set("v", "y", "\"+y")
 -- vim.keymap.set("n", "Y", "\"+Y")
-
+-- let g:kitty_navigator_no_mappings = 1
 vim.opt.clipboard = "unnamedplus"
 
 vim.keymap.set("n", "<leader>lf", function() 
@@ -35,8 +35,8 @@ vim.keymap.set("n", "<C-x>", "<cmd>wq<CR>")
 vim.keymap.set("n", "<leader>qq", "<cmd>q!<CR>")
 
 -- resize window panels
--- vim.keymap.set("n", "<leader>ll", "10<C-w>><CR>")
--- vim.keymap.set("n", "<leader>hh", "10<C-w><<CR>")
+vim.keymap.set("n", "<C-Left>", "5<C-w>><CR>")
+vim.keymap.set("n", "<C-Right>", "5<C-w><<CR>")
 
 vim.keymap.set("n", "gi", "gF")
 
