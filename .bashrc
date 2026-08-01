@@ -47,11 +47,13 @@ alias gpoc='git pull --rebase origin $(__git_ps1 "%s")'
 alias gplc='git pull --rebase luizgfc $(__git_ps1 "%s")'
 alias ll='ls -la --color=auto'
 alias s='prj'
+alias si='prjinternal'
+alias dm='dmark'
 
 export PROMPT_COMMAND='history -a'
 
 prj() {
-    SELECTED=$({ find "$HOME/source" -maxdepth 1; find "$HOME/projects" -maxdepth 1; } | fzf \
+    SELECTED=$({ find "$HOME/source" -maxdepth 1; find "$HOME/projects" -maxdepth 1; find "$HOME/.config" -maxdepth 1; } | fzf \
         --layout=reverse \
         --margin=5 \
         --highlight-line  \
@@ -61,10 +63,34 @@ prj() {
     if [ -n "$SELECTED" ]; then
         cd "$SELECTED"
         NAME="${PWD##*/}"
+        export PRJ_ROOT=$SELECTED
         if type kitty &> /dev/null;
         then
             kitten @ set-tab-title $NAME
         fi;
+    fi;
+}
+
+prjinternal() {
+    SELECTED=$(find $PRJ_ROOT | fzf \
+        --layout=reverse \
+        --margin=5 \
+        --highlight-line  \
+        --style=full \
+        --border=bold --color="bg+:#444444,pointer:#af5fff")
+
+    if [ -n "$SELECTED" ]; then
+        cd "$SELECTED"
+    fi;
+}
+
+dmark() {
+    MARKER=$1
+
+    if [ -n "$MARKER" ]; then
+        alias "dm$MARKER"="cd $PWD"
+    else
+        cd "$PRJ_ROOT"
     fi;
 }
 
