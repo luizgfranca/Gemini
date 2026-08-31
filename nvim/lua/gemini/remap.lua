@@ -51,6 +51,15 @@ vim.keymap.set('n', '<leader>ff', function()
     end
 end)
 
+vim.keymap.set('n', '<leader>mdv', function()
+    require('render-markdown').toggle()
+end)
+
+vim.keymap.set('n', '<leader>cc', '0i - [ ] ')
+vim.keymap.set('n', '<leader>cm', '0f[lrx<esc>')
+
+-- vim.api.nvim_create_user_command('ts2', function ()  vim.opt.shiftwidth = 2 end, {})   
+-- vim.api.nvim_create_user_command('ts4', function ()  vim.opt.shiftwidth = 4 end, {})   
 
 
 
