@@ -42,14 +42,30 @@ vim.keymap.set("n", "gi", "gF")
 
 vim.keymap.set('n', '<leader>ff', function()
     local input = vim.fn.input("fall ")
+    if input == '' then
+        return
+    end
+
+    local lines = vim.fn.systemlist({ "fall", input })
+    vim.fn.setqflist({}, " ", {
+        title = "fall " .. input,
+        lines = lines,
+        efm = "%f:%l:%c:%m",
+    })
+    vim.cmd('copen')
+end)
+
+
+ vim.keymap.set('n', '<leader>fb', function()
+    local input = vim.fn.input("fall ")
     if input ~= '' then 
         vim.cmd('new | r ! fall "' .. input .. '"')
         -- vim.opt_local.readonly = true
         vim.api.nvim_buf_set_option(0, "modified", false)
         -- vim.api.nvim_buf_set_option(0, 'modifiable', false)
-        return
-    end
-end)
+         return
+     end
+ end)
 
 vim.keymap.set('n', '<leader>mdv', function()
     require('render-markdown').toggle()
@@ -60,6 +76,4 @@ vim.keymap.set('n', '<leader>cm', '0f[lrx<esc>')
 
 -- vim.api.nvim_create_user_command('ts2', function ()  vim.opt.shiftwidth = 2 end, {})   
 -- vim.api.nvim_create_user_command('ts4', function ()  vim.opt.shiftwidth = 4 end, {})   
-
-
 
