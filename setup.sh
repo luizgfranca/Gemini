@@ -4,224 +4,8 @@ set -e
 #set -x
 
 
-if type dnf >> /dev/null;
-then
-    echo "[Gemini] DNF system package manager detected"
-    echo "[Gemini] preparing"
-    sudo dnf update
-
-    echo "[Gemini] installing basic libraries and utilities" 
-    sudo dnf install -y \
-        autoconf-archive \
-        automake \
-        ccache \
-        clang \
-        clangd \
-        cmake \
-        curl \
-        liberation-sans-fonts \
-        ninja-build \
-        tar \
-        unzip \
-        zip \
-        zlib-ng-compat-static \
-        git \
-        libxcrypt-compat \
-        pre-commit \
-        ntfs-3g
-
-    echo "[Gemini] instaling packages"
-    sudo dnf install -y \
-        neovim \
-        podman \
-        qbittorrent \
-        flatpak \
-        tmux \
-        cmake \
-        vlc \
-        fzf \
-        hugo \
-        ripgrep
-fi;
-
-if type apt >> /dev/null;
-then
-    echo "[Gemini] APT system package manager detected"
-    echo "[Gemini] preparing"
-    sudo apt update
-
-    echo "[Gemini] installing basic libraries and utilities" 
-    sudo apt install -y \
-        autoconf-archive \
-        automake \
-        ccache \
-        clang \
-        clangd \
-        cmake \
-        curl \
-        fonts-liberation \
-        ninja-build \
-        perl \
-        tar \
-        unzip \
-        zip \
-        zlib1g-dev \
-        git \
-        libcrypt-dev \
-        pre-commit \
-        ntfs-3g
-
-    echo "[Gemini] instaling packages"
-    sudo apt install -y \
-        neovim \
-        podman \
-        qbittorrent \
-        flatpak \
-        tmux \
-        cmake \
-        vlc \
-        fzf \
-        hugo \
-        ripgrep
-fi;
-
-if type pacman >> /dev/null;
-then
-    echo "[Gemini] Pacman system package manager detected"
-    echo "[Gemini] preparing"
-    sudo pacman -Syu --needed --noconfirm
-
-    echo "[Gemini] installing basic libraries and utilities"
-    sudo pacman -S --needed --noconfirm \
-        base-devel \
-        autoconf-archive \
-        automake \
-        ccache \
-        clang \
-        cmake \
-        curl \
-        ttf-liberation \
-        ninja \
-        perl \
-        tar \
-        unzip \
-        zip \
-        git \
-        libxcrypt \
-        pre-commit \
-        wl-clipboard \
-        xclip \
-        ntfs-3g
-
-    echo "[Gemini] instaling packages"
-    sudo pacman -S --needed --noconfirm \
-        neovim \
-        podman \
-        qbittorrent \
-        steam \
-        flatpak \
-        tmux \
-        vlc \
-        fzf \
-        hugo \
-        ripgrep \
-        go \
-        gopls \
-        kitty \
-        rustup \
-        bun \
-        code \
-        intellij-idea-community-edition \
-        scrcpy
-fi;
-
-
-if ! type docker >> /dev/null;
-then
-    echo "[Gemini] Installing Docker"
-    if type dnf >> /dev/null;
-    then
-        echo "[Gemini] Fedora adjacent system docker install"
-        set -x
-        sudo dnf -y install dnf-plugins-core
-        sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-        sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-        sudo usermod -aG docker $USER
-        set +x
-    fi;
-
-    if type apt >> /dev/null;
-    then
-        echo "[Gemini] Ubuntu adjacent system docker install"
-        set -x
-        # Add Docker's official GPG key:
-        sudo apt-get update
-        sudo apt-get install ca-certificates curl
-        sudo install -m 0755 -d /etc/apt/keyrings
-        sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-        sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-        # Add the repository to Apt sources:
-        echo \
-        "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-        $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-        sudo apt-get update
-
-        sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-        sudo usermod -aG docker $USER
-        set +x
-    fi;
-
-    if type pacman >> /dev/null;
-    then
-        echo "[Gemini] Arch adjacent system docker install"
-        set -x
-        sudo pacman -S --needed --noconfirm docker
-        sudo usermod -aG docker $USER
-        set +x
-    fi;
-fi;
-
-if ! type insomnium >> /dev/null;
-then
-    if type dnf >> /dev/null;
-    then
-        echo "[Gemini] installing insomnium"
-        set -x
-        mkdir -p workdir
-        cd workdir
-        curl --location 'https://github.com/ArchGPT/insomnium/releases/download/core%400.2.3-a/Insomnium.Core-0.2.3-a.rpm' > insomnium.rpm
-        sudo dnf install -y ./insomnium.rpm
-        cd ..
-        set +x
-    fi;
-    if type apt >> /dev/null;
-    then
-        echo "[Gemini] installing insomnium"
-        set -x
-        mkdir -p workdir
-        cd workdir
-        curl --location 'https://github.com/ArchGPT/insomnium/releases/download/core%400.2.3-a/Insomnium.Core-0.2.3-a.deb' > insomnium.deb
-        sudo apt install -y ./insomnium.deb
-        cd ..
-        set +x
-    fi;
-
-    if type pacman >> /dev/null;
-    then
-        echo "[Gemini] Installing insomnium from the AUR"
-        set -x
-        mkdir -p workdir
-        cd workdir
-        git clone https://aur.archlinux.org/insomnium-bin.git
-        cd insomnium-bin
-        makepkg --clean --syncdeps --install
-        cd .. # insomnium-bin
-        cd .. # workdir
-        set +x
-    fi;
-fi;
+# Install system packages for the detected distribution.
+bash applications/install.sh
 
 if ! type brave-browser >> /dev/null;
 then
@@ -238,7 +22,7 @@ then
     set +x
 fi;
 
-if ! type go >> /dev/null && ! type pacman >> /dev/null;
+if ! type go >> /dev/null;
 then
     echo "[Gemini] installing golang"
     set -x
@@ -249,28 +33,12 @@ then
     cd ..
 fi;
 
-if type dnf >> /dev/null;
-then
-    sudo dnf install -y gopls
-fi;
-
-if type apt >> /dev/null;
-then
-    sudo apt install -y gopls
-fi;
-set +x
-
 if type rustup >> /dev/null && ! type pacman >> /dev/null;
 then
     echo "[Gemini] installing Rust (path only taken if not Arch based OS)"
     set -x
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs
     set +x
-fi;
-
-if type dnf >> /dev/null;
-then
-    sudo dnf install -y rust-analyzer
 fi;
 
 if ! type rust-analyzer;
@@ -294,7 +62,7 @@ then
     set +x
 fi;
 
-if ! type bun >> /dev/null && ! type pacman >> /dev/null;
+if ! type bun >> /dev/null;
 then
     echo "[Gemini] Installing Bun (only for non-Arch systems)"
     curl -fsSL https://bun.sh/install | bash
@@ -304,14 +72,6 @@ echo "[Gemini] setting up flathub"
 set -x
 flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 set +x
-
-if type apt >> /dev/null;
-then
-    echo "[Gemini] installing flathub discover plugin (Kubuntu workaround)"
-    set -x
-    sudo apt install flatpak plasma-discover-backend-flatpak
-    set +x
-fi;
 
 
 echo "[Gemini] installing flatpak applications"
