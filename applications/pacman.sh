@@ -24,7 +24,8 @@ sudo pacman -S --needed --noconfirm \
     pre-commit \
     wl-clipboard \
     xclip \
-    ntfs-3g
+    ntfs-3g \
+    pacman-contrib
 
 echo "[Gemini] installing packages"
 sudo pacman -S --needed --noconfirm \
@@ -61,3 +62,4 @@ if ! type insomnium >/dev/null 2>&1; then
 fi
 
 sudo pacman -Syu  --noconfirm
+sudo paccache -r
