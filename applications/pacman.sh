@@ -12,6 +12,7 @@ sudo pacman -S --needed --noconfirm \
     ccache \
     clang \
     cmake \
+    coreutils \
     curl \
     ttf-liberation \
     ninja \
@@ -20,6 +21,7 @@ sudo pacman -S --needed --noconfirm \
     unzip \
     zip \
     git \
+    jq \
     libxcrypt \
     pre-commit \
     wl-clipboard \

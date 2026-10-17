@@ -16,3 +16,10 @@ else
     echo "[Gemini] No supported system package manager detected" >&2
     exit 1
 fi
+
+bash "$script_dir/brave.sh"
+bash "$script_dir/rust.sh"
+bash "$script_dir/sdkman.sh"
+bash "$script_dir/flatpak.sh"
+bash "$script_dir/go.sh"
+bash "$script_dir/nvm.sh"

@@ -49,6 +49,7 @@ alias ll='ls -la --color=auto'
 alias s='prj'
 alias si='prjinternal'
 alias dm='dmark'
+alias ls='ls -la'
 
 export PROMPT_COMMAND='history -a'
 

@@ -12,6 +12,7 @@ sudo apt install -y \
     clang \
     clangd \
     cmake \
+    coreutils \
     curl \
     fonts-liberation \
     ninja-build \
@@ -21,6 +22,7 @@ sudo apt install -y \
     zip \
     zlib1g-dev \
     git \
+    jq \
     libcrypt-dev \
     pre-commit \
     ntfs-3g

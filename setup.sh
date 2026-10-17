@@ -4,63 +4,7 @@ set -e
 #set -x
 
 
-# Install system packages for the detected distribution.
 bash applications/install.sh
-
-if ! type brave-browser >> /dev/null;
-then
-    echo "[Gemini] Installing Brave Browser"
-    curl -fsS https://dl.brave.com/install.sh | sh
-fi;
-
-if ! type sdk >> /dev/null;
-then
-    echo "[Gemini] installing sdkman"
-    set -x
-    curl -s "https://get.sdkman.io" | bash
-    source "$HOME/.sdkman/bin/sdkman-init.sh"
-    set +x
-fi;
-
-if ! type go >> /dev/null;
-then
-    echo "[Gemini] installing golang"
-    set -x
-    cd workdir
-    curl --location 'https://go.dev/dl/go1.23.4.linux-amd64.tar.gz' > go.tar.gz
-    rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go.tar.gz
-    set +x
-    cd ..
-fi;
-
-if type rustup >> /dev/null && ! type pacman >> /dev/null;
-then
-    echo "[Gemini] installing Rust (path only taken if not Arch based OS)"
-    set -x
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs
-    set +x
-fi;
-
-if ! type rust-analyzer;
-then
-    rustup default stable
-    rustup component add rust-analyzer
-fi;
-
-if ! type nvm >> /dev/null;
-then
-    echo "[Gemini] installing nvm"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-
-    echo "[Gemini] setting-up latest node version"
-    set -x
-    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
-    nvm install node
-    npm install -g yarn
-    npm install -g typescript-language-server
-    set +x
-fi;
 
 if ! type bun >> /dev/null;
 then
@@ -68,27 +12,6 @@ then
     curl -fsSL https://bun.sh/install | bash
 fi;
 
-echo "[Gemini] setting up flathub"
-set -x
-flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-set +x
-
-
-echo "[Gemini] installing flatpak applications"
-set -x
-flatpak install --system -y flathub \
-	md.obsidian.Obsidian \
-	com.discordapp.Discord \
-	com.protonvpn.www \
-	io.dbeaver.DBeaverCommunity \
-    com.google.Chrome \
-    net.mullvad.MullvadBrowser \
-    app.drey.Warp \
-    com.github.tchx84.Flatseal
-
-sudo flatpak override md.obsidian.Obsidian --filesystem="/data"
-sudo flatpak override com.discordapp.Discord --filesystem="/data"
-set +x
 
 
 if ! type automata >> /dev/null;

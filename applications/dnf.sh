@@ -12,6 +12,7 @@ sudo dnf install -y \
     clang \
     clangd \
     cmake \
+    coreutils \
     curl \
     liberation-sans-fonts \
     ninja-build \
@@ -20,6 +21,7 @@ sudo dnf install -y \
     zip \
     zlib-ng-compat-static \
     git \
+    jq \
     libxcrypt-compat \
     pre-commit \
     ntfs-3g
