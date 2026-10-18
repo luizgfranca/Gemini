@@ -2,7 +2,7 @@
 set -e
 
 echo "[Gemini] preparing"
-sudo pacman -Syu --needed --noconfirm
+sudo pacman -Syyu --needed --noconfirm
 
 echo "[Gemini] installing basic libraries and utilities"
 sudo pacman -S --needed --noconfirm \
@@ -64,4 +64,4 @@ if ! type insomnium >/dev/null 2>&1; then
 fi
 
 sudo pacman -Syu  --noconfirm
-sudo paccache -r
+sudo paccache -rk1

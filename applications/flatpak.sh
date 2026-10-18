@@ -18,9 +18,10 @@ flatpak install --system -y flathub \
     app.drey.Warp \
     com.github.tchx84.Flatseal
 
-flatpak update
+flatpak update -y --noninteractive   
 
 sudo flatpak override md.obsidian.Obsidian --filesystem="/data"
 sudo flatpak override com.discordapp.Discord --filesystem="/data"
 flatpak uninstall --unused -y
+sudo rm -rfv /var/tmp/flatpak-cache-*   
 set +x
