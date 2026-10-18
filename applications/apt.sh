@@ -64,6 +64,12 @@ if ! type insomnium >/dev/null 2>&1; then
     sudo apt install -y ./workdir/insomnium.deb
 fi
 
+if ! type code >/dev/null 2>&1; then
+    mkdir -p workdir
+    curl --location 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' > workdir/vscode.deb
+    sudo dnf install -y ./workdir/vscode.deb
+fi
+
 sudo apt install -y gopls flatpak plasma-discover-backend-flatpak
 
 sudo apt upgrade -y

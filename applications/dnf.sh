@@ -54,6 +54,13 @@ if ! type insomnium >/dev/null 2>&1; then
     sudo dnf install -y ./workdir/insomnium.rpm
 fi
 
+if ! type code >/dev/null 2>&1; then
+    mkdir -p workdir
+    curl --location 'https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64' > workdir/vscode.rpm
+    sudo dnf install -y ./workdir/vscode.rpm
+fi
+
 sudo dnf install -y gopls rust-analyzer
 
 sudo dnf upgrade -y
+
